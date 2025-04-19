@@ -1,24 +1,19 @@
-let functions ={
-     Home : async function(req,res){
-        res.send("home page ")
-        res.end();
-    },
-    About : async function(req,res){
-        res.send("about page ")
-        res.end();
-    },
-    Faq : async function(req,res){
-        res.send("Service Faq")
-        res.end();
-    },
-    Privacypolicy : async function(req,res){
-        res.send("Privacypolicy page")
-        res.end();
-    },
-    Feedback : async function(req,res){
-        res.send("Feedback page")
-        res.end();
-    },
+let user=require("../Collection/User");
+let main_function={
+home:async function(req,res){
+    res.send("Home Page")
+    res.end();
+},
+
+register_user: async function(req,res){
+   try {
+    let user_data= new user(req.body)
+    let create =await user_data.save();
+    res.status(200).json({msg:"Data add sucessfully"})
+   } catch (error) {
+    res.status(501).json({msg :error.message})
+   }
 }
 
-module.exports=functions;
+}
+module.exports=main_function;

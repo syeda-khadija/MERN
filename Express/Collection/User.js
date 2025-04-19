@@ -1,6 +1,6 @@
 let mongo =require("mongoose");
 
-let user_model =mongo.Schema({
+let user_collection=mongo.Schema({
     user_name:{
         type:String,
         required:true
@@ -10,13 +10,13 @@ let user_model =mongo.Schema({
         required:true,
         unique:true
     },
-    Age:{
-        type:Number,
-        require:true
-    },
     password:{
         type:String,
         required:true
+    },
+    Age:{
+        type:Number,
+        require:true
     },
     country:{
         type:String,
@@ -27,4 +27,4 @@ let user_model =mongo.Schema({
         default:Date.now
     }
 })
-module.exports = mongo.model("user_collection",user_model);
+module.exports=mongo.model("user",user_collection);

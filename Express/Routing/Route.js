@@ -1,12 +1,8 @@
-let express=require("express")
-let func =require("../Function/Logic")
+let express=require("express");
+let func=require("../Function/Logic")
 
-let route =express.Router()
-route.get("/",func.Home);
-route.get("/a",func.About);
-route.get("/f",func.Faq);
-route.get("/p",func.Privacypolicy);
-route.get("/f",func.Feedback);
+let router=express.Router();
+router.get("/",func.home);
+router.post("/reg",func.register_user)
 
-
-module.exports=route;
+module.exports=router;
